@@ -1,40 +1,27 @@
-package com.spi.rest.projeto.pratico.model;
+package com.spi.rest.projeto.pratico.dto;
 
-import jakarta.persistence.*;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity
-@Table (name = "usuarios")
-public class UsuarioModel {
+public class UsuarioDtoCreate {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
-    @Column(nullable = false)
+    @NotBlank
     private String nome;
-    @Column(nullable = false ,unique = true)
+    @NotBlank
     private String username;
-    @Column(nullable = false)
+    @NotBlank
+    @Size(min = 4,max = 4)
     private String senha;
 
-    public UsuarioModel(){
+    public UsuarioDtoCreate() {
 
     }
-    public UsuarioModel(Long id, String nome, String username, String senha) {
-        this.id = id;
+
+    public UsuarioDtoCreate(String nome, String username, String senha) {
         this.nome = nome;
         this.username = username;
         this.senha = senha;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
