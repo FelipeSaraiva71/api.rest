@@ -1,7 +1,10 @@
 package com.spi.rest.projeto.pratico.controller;
 
+import com.spi.rest.projeto.pratico.dto.UsuarioDtoCreate;
+import com.spi.rest.projeto.pratico.dto.UsuarioDtoResponse;
 import com.spi.rest.projeto.pratico.model.UsuarioModel;
 import com.spi.rest.projeto.pratico.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +19,9 @@ public class UsuarioController {
 
 
     @PostMapping
-    public UsuarioModel create(@RequestBody UsuarioModel usuarioModel){
-       return usuarioService.create(usuarioModel);
+    public UsuarioDtoResponse create(@Valid @RequestBody UsuarioDtoCreate usuarioDtoCreate){
+        UsuarioDtoResponse response = usuarioService.create(usuarioDtoCreate);
+       return response;
     }
 
     @GetMapping

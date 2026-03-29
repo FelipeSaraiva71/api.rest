@@ -1,5 +1,7 @@
 package com.spi.rest.projeto.pratico.service;
 
+import com.spi.rest.projeto.pratico.dto.UsuarioDtoCreate;
+import com.spi.rest.projeto.pratico.dto.UsuarioDtoResponse;
 import com.spi.rest.projeto.pratico.model.UsuarioModel;
 import com.spi.rest.projeto.pratico.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,19 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public UsuarioModel create(UsuarioModel usuario){
-        return usuarioRepository.save(usuario);
+    public UsuarioDtoResponse create(UsuarioDtoCreate usuarioDtoCreate) {
+        UsuarioModel usuarioModel = new UsuarioModel();
+        usuarioModel.setNome(usuarioDtoCreate.getNome());
+        usuarioModel.setUsername(usuarioDtoCreate.getUsername());
+        usuarioModel.setSenha(usuarioDtoCreate.getSenha());
+
+        UsuarioModel salvo = usuarioRepository.save(usuarioModel);
+
+        return new UsuarioDtoResponse(
+                salvo.getId(),
+                salvo.getNome(),
+                salvo.getUsername()
+        );
     }
 
     public List<UsuarioModel> read(){
