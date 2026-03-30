@@ -1,6 +1,7 @@
 package com.spi.rest.projeto.pratico.service;
 
 import com.spi.rest.projeto.pratico.dto.UsuarioDtoCreate;
+import com.spi.rest.projeto.pratico.dto.UsuarioDtoRead;
 import com.spi.rest.projeto.pratico.dto.UsuarioDtoResponse;
 import com.spi.rest.projeto.pratico.model.UsuarioModel;
 import com.spi.rest.projeto.pratico.repository.UsuarioRepository;
@@ -31,8 +32,13 @@ public class UsuarioService {
         );
     }
 
-    public List<UsuarioModel> read(){
-        return usuarioRepository.findAll();
+    public List<UsuarioDtoRead> read(){
+        UsuarioDtoResponse usuarioDtoResponse;
+        return usuarioRepository.findAll().stream().map(usuarioModel -> new UsuarioDtoRead(
+                usuarioModel.getId(),
+                usuarioModel.getNome()
+        )).toList();
+
     }
 
     public UsuarioModel update(UsuarioModel usuario, Long id){

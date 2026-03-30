@@ -1,6 +1,7 @@
 package com.spi.rest.projeto.pratico.controller;
 
 import com.spi.rest.projeto.pratico.dto.UsuarioDtoCreate;
+import com.spi.rest.projeto.pratico.dto.UsuarioDtoRead;
 import com.spi.rest.projeto.pratico.dto.UsuarioDtoResponse;
 import com.spi.rest.projeto.pratico.model.UsuarioModel;
 import com.spi.rest.projeto.pratico.service.UsuarioService;
@@ -25,7 +26,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<UsuarioModel>read(){
+    public List<UsuarioDtoRead>read(){
         return usuarioService.read();
     }
 
