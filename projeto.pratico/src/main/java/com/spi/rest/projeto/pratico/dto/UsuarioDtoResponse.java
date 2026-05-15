@@ -4,16 +4,16 @@ public class UsuarioDtoResponse {
 
     private Long  id;
     private String nome;
-    private String usarname;
+    private String username;
 
     private UsuarioDtoResponse() {
 
     }
 
-    public UsuarioDtoResponse(Long id, String nome, String usarname) {
+    public UsuarioDtoResponse(Long id, String nome, String username) {
         this.id = id;
         this.nome = nome;
-        this.usarname = usarname;
+        this.username = username;
     }
 
     public Long getId() {
@@ -32,11 +32,11 @@ public class UsuarioDtoResponse {
         this.nome = nome;
     }
 
-    public String getUsarname() {
-        return usarname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsarname(String usarname) {
-        this.usarname = usarname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

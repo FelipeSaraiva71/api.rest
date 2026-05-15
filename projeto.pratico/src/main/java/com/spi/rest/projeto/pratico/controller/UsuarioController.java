@@ -30,6 +30,7 @@ public class UsuarioController {
         return usuarioService.read();
     }
 
+
     @PutMapping("{id}")
     public UsuarioModel update(@RequestBody UsuarioModel usuarioModel,@PathVariable Long id){
         return usuarioService.update(usuarioModel, id);
